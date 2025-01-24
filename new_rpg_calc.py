@@ -327,6 +327,14 @@ def mw_to_pw():
     QTimer.singleShot(1, lambda: pw_add_str.clearFocus())
 
 
+def mw_to_update():
+    for widget in update.findChildren(QLineEdit):
+        widget.clear()
+    for widget in update.findChildren(QLabel):
+        widget.setText("")
+    update.show()
+    QTimer.singleShot(1, lambda: update_name.clearFocus())
+
 def progress_bar_handling(attribute, progress_bar, pw_add, progress_bar_db, attribute_db, id, mw_attribute, mw_progress_bar):
     #attribute is the attribute we'll be dealing with: str, wis, dex, int, cons, char
     #progress_bar is the progress_bar attribute we'll be dealing: str_bar, wis_bar, dex_bar, int_bar, const_bar, char_bar
@@ -639,8 +647,9 @@ mw.setWindowTitle("RPG Calculator 2.0")
 mw_image = QLabel(mw)
 mw_image.setGeometry(50, 40, 250, 250)
 
-mw_edit = QPushButton("NOT READY", mw)
+mw_edit = QPushButton("UPDATE STATS", mw)
 mw_edit.setGeometry(780, 40, 200, 40)
+mw_edit.clicked.connect(mw_to_update)
 
 mw_lvl_clear = QPushButton("DIED? CLEAR LVL XP", mw)
 mw_lvl_clear.setGeometry(780, 90, 200, 40)
@@ -974,6 +983,171 @@ pw_layout.addWidget(pw_button_char, 5, 1)
 pw_layout.addWidget(pw_text, 6, 0, 1, 2)
 
 pw.setLayout(pw_layout)
+
+# Sets the update page
+update = QWidget()
+update.resize(420, 660)
+update.setWindowTitle("RPG Calculator 2.0")
+
+update_name = QLineEdit()
+update_name.setPlaceholderText("Rename Character")
+update_name.setAlignment(Qt.AlignmentFlag.AlignCenter)
+update_name.setMinimumHeight(35)
+update_name_button = QPushButton("CHANGE")
+update_name_button.setMinimumHeight(35)
+#update_name_button.clicked.connect(attribute_progress)
+
+update_total_xp = QLineEdit()
+update_total_xp.setPlaceholderText("Update Total XP")
+update_total_xp.setAlignment(Qt.AlignmentFlag.AlignCenter)
+update_total_xp.setMinimumHeight(35)
+update_total_xp_button = QPushButton("CHANGE")
+update_total_xp_button.setMinimumHeight(35)
+#update_total_xp_button.clicked.connect(attribute_progress)
+
+update_hp = QLineEdit()
+update_hp.setPlaceholderText("Update HP")
+update_hp.setAlignment(Qt.AlignmentFlag.AlignCenter)
+update_hp.setMinimumHeight(35)
+update_hp_button = QPushButton("CHANGE")
+update_hp_button.setMinimumHeight(35)
+#update_hp_button.clicked.connect(attribute_progress)
+
+update_stamina = QLineEdit()
+update_stamina.setPlaceholderText("Update Stamina")
+update_stamina.setAlignment(Qt.AlignmentFlag.AlignCenter)
+update_stamina.setMinimumHeight(35)
+update_stamina_button = QPushButton("CHANGE")
+update_stamina_button.setMinimumHeight(35)
+#update_stamina_button.clicked.connect(attribute_progress)
+
+update_AC = QLineEdit()
+update_AC.setPlaceholderText("Update AC")
+update_AC.setAlignment(Qt.AlignmentFlag.AlignCenter)
+update_AC.setMinimumHeight(35)
+update_AC_button = QPushButton("CHANGE")
+update_AC_button.setMinimumHeight(35)
+#update_AC_button.clicked.connect(attribute_progress)
+
+update_armor = QLineEdit()
+update_armor.setPlaceholderText("Update Armor")
+update_armor.setAlignment(Qt.AlignmentFlag.AlignCenter)
+update_armor.setMinimumHeight(35)
+update_armor_button = QPushButton("CHANGE")
+update_armor_button.setMinimumHeight(35)
+#update_armor_button.clicked.connect(attribute_progress)
+
+update_str = QLineEdit()
+update_str.setPlaceholderText("Update STR")
+update_str.setAlignment(Qt.AlignmentFlag.AlignCenter)
+update_str.setMinimumHeight(35)
+update_str_button = QPushButton("CHANGE")
+update_str_button.setMinimumHeight(35)
+#update_str_button.clicked.connect(attribute_progress)
+
+update_wis = QLineEdit()
+update_wis.setPlaceholderText("Update WIS")
+update_wis.setAlignment(Qt.AlignmentFlag.AlignCenter)
+update_wis.setMinimumHeight(35)
+update_wis_button = QPushButton("CHANGE")
+update_wis_button.setMinimumHeight(35)
+#update_wis_button.clicked.connect(attribute_progress)
+
+update_dex = QLineEdit()
+update_dex.setPlaceholderText("Update DEX")
+update_dex.setAlignment(Qt.AlignmentFlag.AlignCenter)
+update_dex.setMinimumHeight(35)
+update_dex_button = QPushButton("CHANGE")
+update_dex_button.setMinimumHeight(35)
+#update_dex_button.clicked.connect(attribute_progress)
+
+update_int = QLineEdit()
+update_int.setPlaceholderText("Update INT")
+update_int.setAlignment(Qt.AlignmentFlag.AlignCenter)
+update_int.setMinimumHeight(35)
+update_int_button = QPushButton("CHANGE")
+update_int_button.setMinimumHeight(35)
+#update_int_button.clicked.connect(attribute_progress)
+
+update_cons = QLineEdit()
+update_cons.setPlaceholderText("Update CONS")
+update_cons.setAlignment(Qt.AlignmentFlag.AlignCenter)
+update_cons.setMinimumHeight(35)
+update_cons_button = QPushButton("CHANGE")
+update_cons_button.setMinimumHeight(35)
+#update_cons_button.clicked.connect(attribute_progress)
+
+update_char = QLineEdit()
+update_char.setPlaceholderText("Update CHAR")
+update_char.setAlignment(Qt.AlignmentFlag.AlignCenter)
+update_char.setMinimumHeight(35)
+update_char_button = QPushButton("CHANGE")
+update_char_button.setMinimumHeight(35)
+#update_char_button.clicked.connect(attribute_progress)
+
+update_str_progress_button = QPushButton("Revert STR Progress to 0")
+update_str_progress_button.setMinimumHeight(35)
+#update_str_progress_button.clicked.connect(attribute_progress)
+
+update_wis_progress_button = QPushButton("Revert WIS Progress to 0")
+update_wis_progress_button.setMinimumHeight(35)
+#update_wis_progress_button.clicked.connect(attribute_progress)
+
+update_dex_progress_button = QPushButton("Revert DEX Progress to 0")
+update_dex_progress_button.setMinimumHeight(35)
+#update_dex_progress_button.clicked.connect(attribute_progress)
+
+update_int_progress_button = QPushButton("Revert INT Progress to 0")
+update_int_progress_button.setMinimumHeight(35)
+#update_int_progress_button.clicked.connect(attribute_progress)
+
+update_cons_progress_button = QPushButton("Revert CONS Progress to 0")
+update_cons_progress_button.setMinimumHeight(35)
+#update_cons_progress_button.clicked.connect(attribute_progress)
+
+update_char_progress_button = QPushButton("Revert CHAR Progress to 0")
+update_char_progress_button.setMinimumHeight(35)
+#update_char_progress_button.clicked.connect(attribute_progress)
+
+update_text = QLabel()
+update_text.setAlignment(Qt.AlignmentFlag.AlignCenter)
+update_text.setStyleSheet("font-weight: bold")
+
+
+update_layout = QGridLayout()
+update_layout.addWidget(update_name, 0, 0)
+update_layout.addWidget(update_name_button, 0, 1)
+update_layout.addWidget(update_total_xp, 1, 0)
+update_layout.addWidget(update_total_xp_button, 1, 1)
+update_layout.addWidget(update_hp, 2, 0)
+update_layout.addWidget(update_hp_button, 2, 1)
+update_layout.addWidget(update_AC, 3, 0)
+update_layout.addWidget(update_AC_button, 3, 1)
+update_layout.addWidget(update_armor, 4, 0)
+update_layout.addWidget(update_armor_button, 4, 1)
+update_layout.addWidget(update_str, 5, 0)
+update_layout.addWidget(update_str_button, 5, 1)
+update_layout.addWidget(update_wis, 6, 0)
+update_layout.addWidget(update_wis_button, 6, 1)
+update_layout.addWidget(update_dex, 7, 0)
+update_layout.addWidget(update_dex_button, 7, 1)
+update_layout.addWidget(update_int, 8, 0)
+update_layout.addWidget(update_int_button, 8, 1)
+update_layout.addWidget(update_cons, 9, 0)
+update_layout.addWidget(update_cons_button, 9, 1)
+update_layout.addWidget(update_char, 10, 0)
+update_layout.addWidget(update_char_button, 10, 1)
+update_layout.addWidget(update_str_progress_button, 11, 0)
+update_layout.addWidget(update_wis_progress_button, 11, 1)
+update_layout.addWidget(update_dex_progress_button, 12, 0)
+update_layout.addWidget(update_int_progress_button, 12, 1)
+update_layout.addWidget(update_cons_progress_button, 13, 0)
+update_layout.addWidget(update_char_progress_button, 13, 1)
+update_layout.addWidget(update_text, 14, 0, 1, 2)
+
+update.setLayout(update_layout)
+
+
 
 iw.show()
 app.exec()
