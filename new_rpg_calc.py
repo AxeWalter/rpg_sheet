@@ -423,7 +423,8 @@ def update_stats():
         else:
             CharactersTable().update_name(id, new_name)
             mw_name.setText(f"NAME: {new_name.upper()}")
-            update_text.setText("Character Successfully Renamed")
+            update_text.setText("Character Successfully Renamed!")
+
     elif button_select.text() == "Update Total XP":
         try:
             new_xp = int(update_total_xp.text())
@@ -440,10 +441,146 @@ def update_stats():
             new_xp_next_level = calculate_level(new_xp)[1]
             mw_xpnxt_level.setText(f"XP NEXT LEVEL: {new_xp_next_level}")
 
-            update_text.setText("Total XP Successfully Updated")
+            update_text.setText("Total XP Successfully Updated!")
         except ValueError:
             QMessageBox.warning(None, "Invalid XP Value", "Please, insert an integer positive value!")
-    #elif button_select.text() == "":
+
+    elif button_select.text() == "Update HP":
+        try:
+            new_hp = int(update_hp.text())
+            if new_hp < 0:
+                raise ValueError
+
+            BaseStatsTable().update_stats(id, "hp", new_hp)
+            mw_hp.setText(f"HP: {new_hp}")
+            update_text.setText("HP Successfully Updated!")
+
+        except ValueError:
+            QMessageBox.warning(None, "Invalid HP Value", "Please, insert an integer positive value!")
+
+    elif button_select.text() == "Update Stamina":
+        try:
+            new_stamina = int(update_stamina.text())
+            if new_stamina < 0:
+                raise ValueError
+
+            BaseStatsTable().update_stats(id, "stamina", new_stamina)
+            mw_stamina.setText(f"STAMINA: {new_stamina}")
+            update_text.setText("Stamina Successfully Updated!")
+
+        except ValueError:
+            QMessageBox.warning(None, "Invalid Stamina Value", "Please, insert an integer positive value!")
+
+    elif button_select.text() == "Update AC":
+        try:
+            new_ac = int(update_ac.text())
+            if new_ac < 0:
+                raise ValueError
+
+            BaseStatsTable().update_stats(id, "ac", new_ac)
+            mw_ac.setText(f"AC: {new_ac}")
+            update_text.setText("AC Successfully Updated!")
+
+        except ValueError:
+            QMessageBox.warning(None, "Invalid AC Value", "Please, insert an integer positive value!")
+
+    elif button_select.text() == "Update Armor":
+        try:
+            new_armor = int(update_armor.text())
+            if new_armor < 0:
+                raise ValueError
+
+            BaseStatsTable().update_stats(id, "armor", new_armor)
+            mw_armor.setText(f"ARMOR: {new_armor}")
+            update_text.setText("Armor Successfully Updated!")
+
+        except ValueError:
+            QMessageBox.warning(None, "Invalid Armor Value", "Please, insert an integer positive value!")
+
+    elif button_select.text() == "Update STR":
+        try:
+            new_str = int(update_str.text())
+            if new_str < 0:
+                raise ValueError
+
+            AttributesTable().update("str", new_str, id)
+            mw_str.setText(f"STR: {new_str}")
+            update_text.setText("STR Successfully Updated!")
+
+        except ValueError:
+            QMessageBox.warning(None, "Invalid STR Value", "Please, insert an integer positive value!")
+
+    elif button_select.text() == "Update WIS":
+        try:
+            new_wis = int(update_wis.text())
+            if new_wis < 0:
+                raise ValueError
+
+            AttributesTable().update("wis", new_wis, id)
+            mw_wis.setText(f"WIS: {new_wis}")
+            update_text.setText("WIS Successfully Updated!")
+
+        except ValueError:
+            QMessageBox.warning(None, "Invalid WIS Value", "Please, insert an integer positive value!")
+
+    elif button_select.text() == "Update DEX":
+        try:
+            new_dex = int(update_dex.text())
+            if new_dex < 0:
+                raise ValueError
+
+            AttributesTable().update("dex", new_dex, id)
+            mw_dex.setText(f"DEX: {new_dex}")
+            update_text.setText("DEX Successfully Updated!")
+
+        except ValueError:
+            QMessageBox.warning(None, "Invalid DEX Value", "Please, insert an integer positive value!")
+
+    elif button_select.text() == "Update INT":
+        try:
+            new_int = int(update_int.text())
+            if new_int < 0:
+                raise ValueError
+
+            AttributesTable().update("int", new_int, id)
+            mw_int.setText(f"INT: {new_int}")
+            update_text.setText("INT Successfully Updated!")
+
+        except ValueError:
+            QMessageBox.warning(None, "Invalid INT Value", "Please, insert an integer positive value!")
+
+    elif button_select.text() == "Update CONS":
+        try:
+            new_cons = int(update_cons.text())
+            if new_cons < 0:
+                raise ValueError
+
+            AttributesTable().update("cons", new_cons, id)
+            mw_cons.setText(f"CONS: {new_cons}")
+            update_text.setText("CONS Successfully Updated!")
+
+        except ValueError:
+            QMessageBox.warning(None, "Invalid CONS Value", "Please, insert an integer positive value!")
+
+    elif button_select.text() == "Update CHAR":
+        try:
+            new_char = int(update_char.text())
+            if new_char < 0:
+                raise ValueError
+
+            AttributesTable().update("char", new_char, id)
+            mw_char.setText(f"CHAR: {new_char}")
+            update_text.setText("Char Successfully Updated!")
+
+        except ValueError:
+            QMessageBox.warning(None, "Invalid CHAR Value", "Please, insert an integer positive value!")
+
+
+
+
+
+
+
 
 
 
@@ -1030,7 +1167,7 @@ pw.setLayout(pw_layout)
 
 # Sets the update page
 update = QWidget()
-update.resize(420, 780)
+update.resize(420, 820)
 update.setWindowTitle("RPG Calculator 2.0")
 
 update_name = QLineEdit()
@@ -1065,13 +1202,13 @@ update_stamina_button = QPushButton("Update Stamina")
 update_stamina_button.setMinimumHeight(35)
 update_stamina_button.clicked.connect(update_stats)
 
-update_AC = QLineEdit()
-update_AC.setPlaceholderText("New AC Value")
-update_AC.setAlignment(Qt.AlignmentFlag.AlignCenter)
-update_AC.setMinimumHeight(35)
-update_AC_button = QPushButton("Update AC")
-update_AC_button.setMinimumHeight(35)
-update_AC_button.clicked.connect(update_stats)
+update_ac = QLineEdit()
+update_ac.setPlaceholderText("New AC Value")
+update_ac.setAlignment(Qt.AlignmentFlag.AlignCenter)
+update_ac.setMinimumHeight(35)
+update_ac_button = QPushButton("Update AC")
+update_ac_button.setMinimumHeight(35)
+update_ac_button.clicked.connect(update_stats)
 
 update_armor = QLineEdit()
 update_armor.setPlaceholderText("New Armor Value")
@@ -1165,29 +1302,31 @@ update_layout.addWidget(update_total_xp, 1, 0)
 update_layout.addWidget(update_total_xp_button, 1, 1)
 update_layout.addWidget(update_hp, 2, 0)
 update_layout.addWidget(update_hp_button, 2, 1)
-update_layout.addWidget(update_AC, 3, 0)
-update_layout.addWidget(update_AC_button, 3, 1)
-update_layout.addWidget(update_armor, 4, 0)
-update_layout.addWidget(update_armor_button, 4, 1)
-update_layout.addWidget(update_str, 5, 0)
-update_layout.addWidget(update_str_button, 5, 1)
-update_layout.addWidget(update_wis, 6, 0)
-update_layout.addWidget(update_wis_button, 6, 1)
-update_layout.addWidget(update_dex, 7, 0)
-update_layout.addWidget(update_dex_button, 7, 1)
-update_layout.addWidget(update_int, 8, 0)
-update_layout.addWidget(update_int_button, 8, 1)
-update_layout.addWidget(update_cons, 9, 0)
-update_layout.addWidget(update_cons_button, 9, 1)
-update_layout.addWidget(update_char, 10, 0)
-update_layout.addWidget(update_char_button, 10, 1)
-update_layout.addWidget(update_str_progress_button, 11, 0, 1, 2)
-update_layout.addWidget(update_wis_progress_button, 12, 0, 1, 2)
-update_layout.addWidget(update_dex_progress_button, 13, 0, 1, 2)
-update_layout.addWidget(update_int_progress_button, 14, 0, 1, 2)
-update_layout.addWidget(update_cons_progress_button, 15, 0, 1, 2)
-update_layout.addWidget(update_char_progress_button, 16, 0, 1, 2)
-update_layout.addWidget(update_text, 17, 0, 1, 2)
+update_layout.addWidget(update_stamina, 3, 0)
+update_layout.addWidget(update_stamina_button, 3, 1)
+update_layout.addWidget(update_ac, 4, 0)
+update_layout.addWidget(update_ac_button, 4, 1)
+update_layout.addWidget(update_armor, 5, 0)
+update_layout.addWidget(update_armor_button, 5, 1)
+update_layout.addWidget(update_str, 6, 0)
+update_layout.addWidget(update_str_button, 6, 1)
+update_layout.addWidget(update_wis, 7, 0)
+update_layout.addWidget(update_wis_button, 7, 1)
+update_layout.addWidget(update_dex, 8, 0)
+update_layout.addWidget(update_dex_button, 8, 1)
+update_layout.addWidget(update_int, 9, 0)
+update_layout.addWidget(update_int_button, 9, 1)
+update_layout.addWidget(update_cons, 10, 0)
+update_layout.addWidget(update_cons_button, 10, 1)
+update_layout.addWidget(update_char, 11, 0)
+update_layout.addWidget(update_char_button, 11, 1)
+update_layout.addWidget(update_str_progress_button, 12, 0, 1, 2)
+update_layout.addWidget(update_wis_progress_button, 13, 0, 1, 2)
+update_layout.addWidget(update_dex_progress_button, 14, 0, 1, 2)
+update_layout.addWidget(update_int_progress_button, 15, 0, 1, 2)
+update_layout.addWidget(update_cons_progress_button, 16, 0, 1, 2)
+update_layout.addWidget(update_char_progress_button, 17, 0, 1, 2)
+update_layout.addWidget(update_text, 18, 0, 1, 2)
 
 update.setLayout(update_layout)
 

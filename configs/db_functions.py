@@ -83,6 +83,14 @@ class BaseStatsTable:
             query = db.session.query(Base_stats).filter(Base_stats.character_id == id).all()
             return query
 
+    def update_stats(self, id, stat, stat_new_value):
+        with DBConnectionHandler() as db:
+            try:
+                db.session.query(Base_stats).filter(Base_stats.character_id == id).update({stat: stat_new_value})
+                db.session.commit()
+            except Exception as exception:
+                db.session.rollback()
+                raise exception
 
 class AttributesTable:
 
