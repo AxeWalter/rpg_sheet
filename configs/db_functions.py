@@ -65,6 +65,15 @@ class CharactersTable:
                 db.session.rollback()
                 raise exception
 
+    def update_name(self, id, new_name):
+        with DBConnectionHandler() as db:
+            try:
+                db.session.query(Characters).filter(Characters.id == id).update({"name" : new_name})
+                db.session.commit()
+            except Exception as exception:
+                db.session.rollback()
+                raise exception
+
 
 
 class BaseStatsTable:
