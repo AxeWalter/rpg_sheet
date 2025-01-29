@@ -629,20 +629,6 @@ def update_stats():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 app = QApplication(sys.argv) #Creates the application
 # In case of needing to revert, here is where I enforce the border for the QLineEdits. Just delete border,
 # border-radius and padding.
@@ -1347,7 +1333,7 @@ update_char_progress_button.clicked.connect(update_stats)
 
 update_text = QLabel()
 update_text.setAlignment(Qt.AlignmentFlag.AlignCenter)
-update_text.setStyleSheet("font-weight: bold")
+update_text.setStyleSheet("font-weight: bold; font-size: 16px; color: yellow")
 
 
 update_layout = QGridLayout()
