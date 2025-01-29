@@ -407,6 +407,22 @@ def attribute_progress():
                               attributes.char, id, mw_char, mw_char_progress)
 
 
+def confirmation_box(attribute_progress_bar):
+    confirmation_box = QMessageBox()
+    confirmation_box.setWindowTitle("Confirmation")
+    confirmation_box.setText(
+        f"Are you sure you want to perform this action?\nThis will clear all your current {attribute_progress_bar} "
+        "progress!")
+    confirmation_box.setIcon(QMessageBox.Icon.Question)
+
+    confirmation_box.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+    confirmation_box.setDefaultButton(QMessageBox.StandardButton.No)
+
+    response = confirmation_box.exec()
+
+    return response == QMessageBox.StandardButton.Yes
+
+
 def update_stats():
     button_select = update.sender()
     name = mw_name.text()[6:].lower()
@@ -574,6 +590,45 @@ def update_stats():
 
         except ValueError:
             QMessageBox.warning(None, "Invalid CHAR Value", "Please, insert an integer positive value!")
+
+    elif button_select.text() == "Revert STR Progress to 0":
+        if confirmation_box("STR"):
+            AttributesProgressBarTable().update("str_bar", 0, id)
+            mw_str_progress.setValue(0)
+            update_text.setText("STR Progress set to 0")
+
+    elif button_select.text() == "Revert WIS Progress to 0":
+        if confirmation_box("WIS"):
+            AttributesProgressBarTable().update("wis_bar", 0, id)
+            mw_wis_progress.setValue(0)
+            update_text.setText("WIS Progress set to 0")
+
+    elif button_select.text() == "Revert DEX Progress to 0":
+        if confirmation_box("DEX"):
+            AttributesProgressBarTable().update("dex_bar", 0, id)
+            mw_dex_progress.setValue(0)
+            update_text.setText("DEX Progress set to 0")
+
+    elif button_select.text() == "Revert INT Progress to 0":
+        if confirmation_box("INT"):
+            AttributesProgressBarTable().update("int_bar", 0, id)
+            mw_int_progress.setValue(0)
+            update_text.setText("INT Progress set to 0")
+
+    elif button_select.text() == "Revert CONS Progress to 0":
+        if confirmation_box("CONS"):
+            AttributesProgressBarTable().update("cons_bar", 0, id)
+            mw_cons_progress.setValue(0)
+            update_text.setText("CONS Progress set to 0")
+
+    elif button_select.text() == "Revert CHAR Progress to 0":
+        if confirmation_box("CHAR"):
+            AttributesProgressBarTable().update("char_bar", 0, id)
+            mw_char_progress.setValue(0)
+            update_text.setText("CHAR Progress set to 0")
+
+
+
 
 
 
