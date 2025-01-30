@@ -427,6 +427,7 @@ def update_stats():
     button_select = update.sender()
     name = mw_name.text()[6:].lower()
     id = CharactersTable().select_id(name)
+    attributes_progress = AttributesProgressBarTable().select_all(id)[0]
 
     if button_select.text() == "Rename Character":
         new_name = update_name.text().lower()
@@ -521,6 +522,10 @@ def update_stats():
 
             AttributesTable().update("str", new_str, id)
             mw_str.setText(f"STR: {new_str}")
+            if new_str <= 20:
+                mw_str_progress.setValue(attributes_progress.str_bar)
+            else:
+                mw_str_progress.setValue(round(attributes_progress.str_bar/2))
             update_text.setText("STR Successfully Updated!")
 
         except ValueError:
@@ -534,6 +539,10 @@ def update_stats():
 
             AttributesTable().update("wis", new_wis, id)
             mw_wis.setText(f"WIS: {new_wis}")
+            if new_wis <= 20:
+                mw_wis_progress.setValue(attributes_progress.wis_bar)
+            else:
+                mw_wis_progress.setValue(round(attributes_progress.wis_bar/2))
             update_text.setText("WIS Successfully Updated!")
 
         except ValueError:
@@ -547,6 +556,10 @@ def update_stats():
 
             AttributesTable().update("dex", new_dex, id)
             mw_dex.setText(f"DEX: {new_dex}")
+            if new_dex <= 20:
+                mw_dex_progress.setValue(attributes_progress.dex_bar)
+            else:
+                mw_dex_progress.setValue(round(attributes_progress.dex_bar/2))
             update_text.setText("DEX Successfully Updated!")
 
         except ValueError:
@@ -560,6 +573,10 @@ def update_stats():
 
             AttributesTable().update("int", new_int, id)
             mw_int.setText(f"INT: {new_int}")
+            if new_int <= 20:
+                mw_int_progress.setValue(attributes_progress.int_bar)
+            else:
+                mw_int_progress.setValue(round(attributes_progress.int_bar/2))
             update_text.setText("INT Successfully Updated!")
 
         except ValueError:
@@ -573,6 +590,10 @@ def update_stats():
 
             AttributesTable().update("cons", new_cons, id)
             mw_cons.setText(f"CONS: {new_cons}")
+            if new_cons <= 20:
+                mw_cons_progress.setValue(attributes_progress.cons_bar)
+            else:
+                mw_cons_progress.setValue(round(attributes_progress.cons_bar/2))
             update_text.setText("CONS Successfully Updated!")
 
         except ValueError:
@@ -586,6 +607,10 @@ def update_stats():
 
             AttributesTable().update("char", new_char, id)
             mw_char.setText(f"CHAR: {new_char}")
+            if new_char <= 20:
+                mw_char_progress.setValue(attributes_progress.char_bar)
+            else:
+                mw_char_progress.setValue(round(attributes_progress.char_bar/2))
             update_text.setText("Char Successfully Updated!")
 
         except ValueError:
