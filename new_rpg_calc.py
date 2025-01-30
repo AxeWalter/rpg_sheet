@@ -321,21 +321,27 @@ def confirmation():
 
 
 def mw_to_pw():
-    for widget in pw.findChildren(QLineEdit):
-        widget.clear()
-    for widget in pw.findChildren(QLabel):
-        widget.setText("")
-    pw.show()
-    QTimer.singleShot(1, lambda: pw_add_str.clearFocus())
+    if pw.isVisible():
+        pw.raise_()
+    else:
+        for widget in pw.findChildren(QLineEdit):
+            widget.clear()
+        for widget in pw.findChildren(QLabel):
+            widget.setText("")
+        pw.show()
+        QTimer.singleShot(1, lambda: pw_add_str.clearFocus())
 
 
 def mw_to_update():
-    for widget in update.findChildren(QLineEdit):
-        widget.clear()
-    for widget in update.findChildren(QLabel):
-        widget.setText("")
-    update.show()
-    QTimer.singleShot(1, lambda: update_name.clearFocus())
+    if update.isVisible():
+        update.raise_()
+    else:
+        for widget in update.findChildren(QLineEdit):
+            widget.clear()
+        for widget in update.findChildren(QLabel):
+            widget.setText("")
+        update.show()
+        QTimer.singleShot(1, lambda: update_name.clearFocus())
 
 def progress_bar_handling(attribute, progress_bar, pw_add, progress_bar_db, attribute_db, id, mw_attribute, mw_progress_bar):
     #attribute is the attribute we'll be dealing with: str, wis, dex, int, cons, char
